@@ -1,0 +1,94 @@
+# Build Folders
+bin/
+obj/
+out/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.rsuser
+*.sln.docstates
+
+# Logs
+*.log
+*.tlog
+
+# Visual Studio
+.vs/
+.vscode/
+.idea/
+*.ncb
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+!**/packages/build/
+!**/packages/repositories.config
+
+# Test Results
+TestResults/
+*.coverage
+*.coveragexml
+
+# Publish
+publish/
+app.publish/
+*.Publish.xml
+*.pubxml
+*.pubxml.user
+
+# Generated files
+Generated\ Files/
+*.g.*
+*.i.*
+
+# Backup and temporary files
+*~
+*.bak
+*.tmp
+*.temp
+*.cache
+*.swp
+*.dbmdl
+*.pdb
+
+# Entity Framework / Dapper artifacts
+Migrations/
+*.sqlite
+
+# Configuration
+appsettings.*.local.json
+appsettings.development.json
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings
+
+# Others
+node_modules/
+.env
