@@ -54,6 +54,7 @@ The goal of this project is to build a simple, structured system that records an
 
 # Folder Structure
 
+``` 
 MinibusTracker.Api/                    (Presentation)
 ├─ Controllers/
 ├─ Contracts/                          (optional: request/response models for the API)
@@ -105,3 +106,4 @@ MinibusTracker.Infrastructure/         (Infrastructure)
 ├─ Configuration/
 │  └─ DependencyInjection.cs           <-- AddInfrastructure(this IServiceCollection ...)
 └─ Migrations/                         (optional: SQL scripts)
+```
