@@ -10,7 +10,7 @@ public class MySqlConnectionFactory : IDBConnectionFactory
 
     public MySqlConnectionFactory(IConfiguration config)
     {
-        _connectionString = config.GetConnectionString("TaxiDb");
+        this._connectionString = config.GetConnectionString("TaxiDb");
     }
 
     public IDbConnection create()
