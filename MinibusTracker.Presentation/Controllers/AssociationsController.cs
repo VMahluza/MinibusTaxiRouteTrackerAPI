@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MinibusTracker.Application.Abstractions.Persistence;
 using MinibusTracker.Application.Common.Interfaces;
 using MinibusTracker.Application.DTO.Associations;
+using MinibusTracker.Application.UseCases.Associations;
 using MinibusTracker.Domain.Entities;
 
 namespace MinibusTracker.Presentation.Controllers;
@@ -15,11 +16,13 @@ public class AssociationsController : ControllerBase
 {
     private readonly IAssociationRepository _associationRepository;
     private readonly ILoggerManager _loggerManager;
+    private readonly IAssociationService _associationService;
 
-    public AssociationsController(IAssociationRepository associationRepository, ILoggerManager _loggerManager)
+    public AssociationsController(IAssociationRepository associationRepository, ILoggerManager _loggerManager, IAssociationService _associationService)
     {
         this._loggerManager = _loggerManager;
         this._associationRepository = associationRepository;
+        this._associationService = _associationService;
     }
 
 
@@ -33,14 +36,9 @@ public class AssociationsController : ControllerBase
 
         try
         {
-            var associationEntity = new Association
-            {
-                Name = createAssociationRequest.Name.Trim(),
-                Region = string.IsNullOrWhiteSpace(createAssociationRequest.Region) ? null : createAssociationRequest.Region,
-                ContactPhone = string.IsNullOrWhiteSpace(createAssociationRequest.ContactPhone) ? null : createAssociationRequest.ContactPhone
-            };
+            Guid newAssociationId = await _associationService.Create(createAssociationRequest, cancellationToken);
 
-            Guid newAssociationId = await _associationRepository.CreateAsync(associationEntity, cancellationToken);
+            // TODO: Introduce getAssociationById method in the service layer
             var createdAssociation = await _associationRepository.GetByIdAsync(newAssociationId, cancellationToken);
 
             if (createdAssociation == null) 

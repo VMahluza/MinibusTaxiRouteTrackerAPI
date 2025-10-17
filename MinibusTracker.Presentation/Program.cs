@@ -6,6 +6,9 @@ using MinibusTracker.Application.Common.Interfaces;
 using MinibusTracker.Infrastructure.Common.Logging;
 using MinibusTracker.Infrastructure.Persistence.Common;
 using MinibusTracker.Infrastructure.Persistence.Repositories;
+using MinibusTracker.Application.Abstractions.Data;
+using MinibusTracker.Application.UseCases.Associations;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,7 +48,12 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<IDBConnectionFactory, MySqlConnectionFactory>();
 
 // Registrations 
+
+// ASSOCIATION
+// Repository and SERVICES
 builder.Services.AddScoped<IAssociationRepository, AssociationRepository>();
+builder.Services.AddScoped<IAssociationService, AssociationService>();
+
 
 // Configure logging
 builder.Services.AddLogging(logging =>

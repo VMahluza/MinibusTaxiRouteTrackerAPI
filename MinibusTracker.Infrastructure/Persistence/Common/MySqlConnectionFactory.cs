@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MySqlConnector;
 using System.Data;
+using MinibusTracker.Application.Abstractions.Data;
 
 
 namespace MinibusTracker.Infrastructure.Persistence.Common;

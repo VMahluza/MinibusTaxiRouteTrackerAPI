@@ -4,7 +4,7 @@ using MinibusTracker.Application.Common.Interfaces;
 using MinibusTracker.Domain.Entities;
 using MinibusTracker.Infrastructure.Dapper;
 using MinibusTracker.Infrastructure.Persistence.Common;
-
+using MinibusTracker.Application.Abstractions.Data;
 namespace MinibusTracker.Infrastructure.Persistence.Repositories;
 
 public class AssociationRepository : IAssociationRepository
