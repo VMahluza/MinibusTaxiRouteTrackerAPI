@@ -1,0 +1,6 @@
+@MinibusTracker.Presentation_HostAddress = http://localhost:5023
+
+GET {{MinibusTracker.Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

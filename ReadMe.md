@@ -50,3 +50,58 @@ The goal of this project is to build a simple, structured system that records an
 | **Route** | Describes a taxi route, including fare details. | Belongs to Association, has many Stops and Incidents |
 | **Stop** | A physical pickup/drop-off point along a route. | Belongs to Route |
 | **Incident** | Records issues or updates affecting a route. | Belongs to Route |
+
+
+# Folder Structure
+
+MinibusTracker.Api/                    (Presentation)
+├─ Controllers/
+├─ Contracts/                          (optional: request/response models for the API)
+├─ Extensions/
+│  └─ Swagger/                         (optional: swagger configs)
+├─ Program.cs
+└─ appsettings.json
+
+MinibusTracker.Application/            (Application)
+├─ Abstractions/                       (== “Contracts”: interfaces only)
+│  ├─ Data/
+│  │  └─ IDbConnectionFactory.cs       <-- put the *interface* here
+│  └─ Persistence/
+│     ├─ IAssociationRepository.cs
+│     ├─ IRouteRepository.cs
+│     ├─ IStopRepository.cs
+│     └─ IIncidentRepository.cs
+├─ DTOs/
+│  └─ Associations/...
+├─ UseCases/
+│  └─ Associations/
+│     ├─ CreateAssociation/
+│     ├─ GetAssociation/
+│     ├─ UpdateAssociation/
+│     └─ DeleteAssociation/
+└─ Common/                             (optional: validators, result wrappers, etc.)
+
+MinibusTracker.Domain/                 (Domain)
+├─ Entities/
+│  ├─ Association.cs
+│  ├─ Route.cs
+│  ├─ Stop.cs
+│  └─ Incident.cs
+├─ ValueObjects/                       (optional later)
+├─ Enums/
+└─ Exceptions/                         (optional: domain-specific)
+
+MinibusTracker.Infrastructure/         (Infrastructure)
+├─ Persistence/
+│  ├─ MySqlConnectionFactory.cs        <-- *implementation* of IDbConnectionFactory
+│  └─ Repositories/
+│     ├─ AssociationRepository.cs
+│     ├─ RouteRepository.cs
+│     ├─ StopRepository.cs
+│     └─ IncidentRepository.cs
+├─ Dapper/
+│  ├─ DapperHelper.cs                  <-- your Senior’s mapping helper lives here
+│  └─ TypeHandlers/                    (optional later)
+├─ Configuration/
+│  └─ DependencyInjection.cs           <-- AddInfrastructure(this IServiceCollection ...)
+└─ Migrations/                         (optional: SQL scripts)
